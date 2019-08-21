@@ -19,22 +19,6 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('Deploy - Staging') {
-            steps {
-                sh './deploy staging'
-                sh './run-smoke-tests'
-            }
-        }
-        stage('Sanity check') {
-            steps {
-                input "Does the staging environment look ok?"
-            }
-        }
-        stage('Deploy - Production') {
-            steps {
-                sh './deploy production'
-            }
-        }
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
